@@ -1,0 +1,9 @@
+localhost:8000/user/login - POST Method
+localhost:8000/user/register - POST Method
+localhost:8000/user/all - (still pending)
+
+localhost:8000/product - root url(GET Method)
+localhost:8000/product/Upload - POST Method
+localhost:8000/product/Mobiles - GET Method
+localhost:8000/Product/Laptops - GET Method
+localhost:8000/Product/Mobiles - GET Method
