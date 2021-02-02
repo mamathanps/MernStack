@@ -1,6 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getLoginAction } from "../../../../redux/user/user.actions";
 
 let Login = () => {
+    let [user, setUser] = useState({ email: '', password: '' });
+    let dispatch = useDispatch();
+    let history = useHistory();
+    let inputHandler = (event) => {
+        setUser ({
+            ...user,
+            [event.target.name]: event.target.value,
+        });
+    };
+
+    let submitHandler = (event) => {
+        console.log(user);
+        //Dispatch the Action
+        dispatch(getLoginAction(user, history));
+        event.preventDefault();
+    };
     return (
         <React.Fragment>
             <section className="p-2 bg-success text-center">
@@ -30,13 +49,13 @@ let Login = () => {
                                     <h3><b> Login-Form </b></h3>
                                 </div>
                                 <div className="card-body">
-                                <form>
+                                <form onSubmit={submitHandler}>
                                     <div className="form-group">
-                                        <input type="email" className="form-control" placeholder="Enter E-Mail Id"/>
+                                        <input type="email" className="form-control" placeholder="Enter E-Mail Id" name="email" value={user.email} onChange={inputHandler} />
                                     </div>
                                     <br/>
                                     <div className="form-group">
-                                        <input type="password" className="form-control" placeholder="Enter Password"/>
+                                        <input type="password" className="form-control" placeholder="Enter Password" name="password" value={user.password} onChange={inputHandler} />
                                     </div>
                                     <br/>
                                     <div className="form-group">

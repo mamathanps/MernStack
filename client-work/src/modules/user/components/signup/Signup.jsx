@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getSignup } from "../../../../redux/user/user.actions";
 
 let Signup = () => {
+    let dispatch = useDispatch();
+    let history = useHistory();
     let [user, setUser] = useState({
         name:"",
         email:"",
@@ -16,6 +21,7 @@ let Signup = () => {
     let SignUpHandler = (e) => {
         console.log(user);
         e.preventDefault();
+        dispatch(getSignup(user, history)); 
     };
 
     return (

@@ -6,11 +6,14 @@ import Login from "./modules/user/components/login/Login";
 import Home from "./modules/layout/components/home/Home";
 import Profile from "./modules/user/components/profile/Profile";
 import Upload from "./modules/product/components/upload/Upload";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 
 let App = () => {
   return (
       <React.Fragment>
+        <Provider store = { store }>
         <Router>
            <Navbar />
            
@@ -21,7 +24,8 @@ let App = () => {
              <Route exact path="/user/profile" component={Profile}></Route>
              <Route exact path="/product/upload" component={Upload}></Route>
            </Switch>
-        </Router>   
+        </Router>
+        </Provider>   
       </React.Fragment>
   );
 };
